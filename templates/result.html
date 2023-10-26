@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Result
+{% endblock %}
+
+{% block body %}
+    <div class="container px-4 py-5" id="hanging-icons">
+        <h2 class="pb-2 border-bottom">Download Files</h2>
+        <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+            {% for key in info %}
+
+                <div class="col d-flex align-items-start">
+                    <div style="width: 100%">
+                        <h2>{{ key }}</h2>
+                        <div>
+                            <ul class="list-group">
+                                {% for idx in range(info[key]["name"]|length) %}
+                                    <li class="list-group-item btn text-start"
+                                        style="text-decoration: underline; color: blue"
+                                        onclick="downloadFile(this)"
+                                        data-file-url={{ info[key]["path"][idx] }}>
+                                        {{ info[key]["name"][idx] }}
+                                    </li>
+
+                                {% endfor %}
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <script>
+        function downloadFile(buttonElement) {
+            var fileUrl = buttonElement.getAttribute("data-file-url");
+            var a = document.createElement("a");
+            a.href = fileUrl;
+            a.download = ""; // Setting this to an empty string will use the file's original name
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    </script>
+
+
+{% endblock %}

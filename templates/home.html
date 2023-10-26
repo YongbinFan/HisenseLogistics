@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body %}
+    <div class="px-4 py-5 my-5 ">
+        <img class="d-block mx-auto mb-4" src="../static/hisense.png" alt="" width="200" height="200">
+        <div class="col-lg-6 mx-auto">
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Upload Hisense File</label>
+                    <input class="form-control" type="file" id="formFile" name="hisense">
+                </div>
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Upload QLS File</label>
+                    <input class="form-control" type="file" id="formFile" name="qls">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+
+            </form>
+
+        </div>
+    </div>
+{% endblock %}
